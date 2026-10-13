@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.2",
-  "versionCode": 1000002,
-  "publishedAt": "2026-10-13T19:42:35.685Z",
+  "versionName": "1.0.3",
+  "versionCode": 1000003,
+  "publishedAt": "2026-10-13T19:53:56.047Z",
   "sourceCommit": "b53a8c5adf3cecc544f2633dee89204365ce0e1e",
   "releaseNotes": [
     {
-      "title": "Bug fixes",
+      "title": "Improvements",
       "items": [
-        "Fix Android chat keyboard inset and focus recovery"
+        "Updates and refinements in version 1.0.3."
       ]
     }
   ],
@@ -17,16 +17,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.2/OnlyUs.apk",
-      "sizeBytes": 5074543,
-      "sha256": "90caa197b334bfd44edb4f9285f12d1c19e2d768ef6dd4169c396e0bf359ffa5"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.3/OnlyUs.apk",
+      "sizeBytes": 5074542,
+      "sha256": "5581be4e1754222a17e7d9516f6e8080478954cbe06c35434d611994daebf7a4"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.2/Notes.apk",
-      "sizeBytes": 4964925,
-      "sha256": "513680ce3de58cec35e1a2ca844482a296f3f326281375059c45e62b14c5581d"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.3/Notes.apk",
+      "sizeBytes": 4964936,
+      "sha256": "2deaa52ef8be4d497a2512f5c28d8118512f9884fcdf03148d25acc25c4873e6"
     }
   }
 }
