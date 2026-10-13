@@ -3,13 +3,13 @@
   "appName": "OnlyUs",
   "versionName": "1.0.2",
   "versionCode": 1000002,
-  "publishedAt": "2026-10-13T18:52:11.797Z",
-  "sourceCommit": "351eac249f1af2d1f1afeaabed8a87b332fea6a1",
+  "publishedAt": "2026-10-13T19:42:35.685Z",
+  "sourceCommit": "b53a8c5adf3cecc544f2633dee89204365ce0e1e",
   "releaseNotes": [
     {
       "title": "Bug fixes",
       "items": [
-        "Fix chat IME focus, theme bars, and self-update installer (#15)"
+        "Fix Android chat keyboard inset and focus recovery"
       ]
     }
   ],
@@ -18,15 +18,15 @@
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.2/OnlyUs.apk",
-      "sizeBytes": 5074008,
-      "sha256": "4e3e9671523fd5918231ab8860414582d01a44e3f232cbada82a6c6e2ca23b3f"
+      "sizeBytes": 5074543,
+      "sha256": "90caa197b334bfd44edb4f9285f12d1c19e2d768ef6dd4169c396e0bf359ffa5"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.2/Notes.apk",
-      "sizeBytes": 4964404,
-      "sha256": "aa62e7575f2d8d97ca91becac0e0ac80c9c60615bf6779f7802a1ff9e0275d49"
+      "sizeBytes": 4964925,
+      "sha256": "513680ce3de58cec35e1a2ca844482a296f3f326281375059c45e62b14c5581d"
     }
   }
 }
