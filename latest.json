@@ -1,33 +1,16 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.0",
-  "versionCode": 1000000,
-  "publishedAt": "2026-10-13T11:04:01.443Z",
-  "sourceCommit": "1708feb3ddf08417e2e5bf761565aac5fb2f71e0",
+  "versionName": "1.0.1",
+  "versionCode": 1000001,
+  "publishedAt": "2026-10-13T17:37:12.286Z",
+  "sourceCommit": "4c4544100aae1ccf55083cd6d65d34d4e083314e",
   "releaseNotes": [
     {
-      "title": "New features",
+      "title": "Other updates",
       "items": [
-        "Add native APK force-update flow and public release metadata (#11)",
-        "Add self-hosted incremental OTA updates (#10)",
-        "implement circadian sleep cycle and butterfly command",
-        "add 3D visual effects and pet animations",
-        "add glow effect component and utility helpers"
-      ]
-    },
-    {
-      "title": "Improvements",
-      "items": [
-        "Automate Play Store-style release notes and speed up APK builds"
-      ]
-    },
-    {
-      "title": "Bug fixes",
-      "items": [
-        "Fix release-note history and remove duplicate APK aliases",
-        "align version code with Rock Boys scheme",
-        "make OnlyUs favicon square"
+        "Keep chat keyboard open across WhatsApp-style replies",
+        "Polish Mochi haptics and message-swipe attachment"
       ]
     }
   ],
@@ -35,16 +18,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.0/OnlyUs.apk",
-      "sizeBytes": 5067108,
-      "sha256": "a22061ae27c14ac175d7c69f191a33f6123a1533dae7f8e1a9c33033ac913cec"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.1/OnlyUs.apk",
+      "sizeBytes": 5072262,
+      "sha256": "349fd7b437bc65b0f28099638116773f95c7222885acf8470222fa53c4c20f00"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.0/Notes.apk",
-      "sizeBytes": 4957480,
-      "sha256": "42975e7958fd1adfbe4cdced6990e783eae865d41605350d8e71173f6ee990af"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.1/Notes.apk",
+      "sizeBytes": 4962629,
+      "sha256": "e39b3f1cda42365a38dc60b80c75ec5e509356b1bb27917b7a06157d87c99e4f"
     }
   }
 }
