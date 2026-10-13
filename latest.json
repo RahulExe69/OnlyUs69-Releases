@@ -1,16 +1,15 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.1",
-  "versionCode": 1000001,
-  "publishedAt": "2026-10-13T17:37:12.286Z",
-  "sourceCommit": "4c4544100aae1ccf55083cd6d65d34d4e083314e",
+  "versionName": "1.0.2",
+  "versionCode": 1000002,
+  "publishedAt": "2026-10-13T18:52:11.797Z",
+  "sourceCommit": "351eac249f1af2d1f1afeaabed8a87b332fea6a1",
   "releaseNotes": [
     {
-      "title": "Other updates",
+      "title": "Bug fixes",
       "items": [
-        "Keep chat keyboard open across WhatsApp-style replies",
-        "Polish Mochi haptics and message-swipe attachment"
+        "Fix chat IME focus, theme bars, and self-update installer (#15)"
       ]
     }
   ],
@@ -18,16 +17,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.1/OnlyUs.apk",
-      "sizeBytes": 5072262,
-      "sha256": "349fd7b437bc65b0f28099638116773f95c7222885acf8470222fa53c4c20f00"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.2/OnlyUs.apk",
+      "sizeBytes": 5074008,
+      "sha256": "4e3e9671523fd5918231ab8860414582d01a44e3f232cbada82a6c6e2ca23b3f"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.1/Notes.apk",
-      "sizeBytes": 4962629,
-      "sha256": "e39b3f1cda42365a38dc60b80c75ec5e509356b1bb27917b7a06157d87c99e4f"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.2/Notes.apk",
+      "sizeBytes": 4964404,
+      "sha256": "aa62e7575f2d8d97ca91becac0e0ac80c9c60615bf6779f7802a1ff9e0275d49"
     }
   }
 }
