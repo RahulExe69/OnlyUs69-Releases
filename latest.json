@@ -1,15 +1,22 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.3",
-  "versionCode": 1000003,
-  "publishedAt": "2026-10-13T19:53:56.047Z",
-  "sourceCommit": "b53a8c5adf3cecc544f2633dee89204365ce0e1e",
+  "versionName": "1.0.4",
+  "versionCode": 1000004,
+  "publishedAt": "2026-10-13T21:00:10.985Z",
+  "sourceCommit": "1a688c0bcb2f503ce1dc5fc13d7916863c908f28",
   "releaseNotes": [
     {
-      "title": "Improvements",
+      "title": "Bug fixes",
       "items": [
-        "Updates and refinements in version 1.0.3."
+        "Fix native IME inset gap and chat focus recovery race"
+      ]
+    },
+    {
+      "title": "Other updates",
+      "items": [
+        "Disable WebView keyboard passthrough in native Android shell",
+        "Use native IME resize to remove keyboard navigation gap"
       ]
     }
   ],
@@ -17,16 +24,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.3/OnlyUs.apk",
-      "sizeBytes": 5074542,
-      "sha256": "5581be4e1754222a17e7d9516f6e8080478954cbe06c35434d611994daebf7a4"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.4/OnlyUs.apk",
+      "sizeBytes": 5074430,
+      "sha256": "1450e0b4055d95be9e0a21517f055d671be16125ba8404f4c33fe15c618ef5ad"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.3/Notes.apk",
-      "sizeBytes": 4964936,
-      "sha256": "2deaa52ef8be4d497a2512f5c28d8118512f9884fcdf03148d25acc25c4873e6"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.4/Notes.apk",
+      "sizeBytes": 4964808,
+      "sha256": "b468845793a8b58968e19e00adb4b95f0039073489de9654401dc51584b6a619"
     }
   }
 }
