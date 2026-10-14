@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.5",
-  "versionCode": 1000005,
-  "publishedAt": "2026-10-13T21:26:50.816Z",
-  "sourceCommit": "a07d8f3bd95c6b05e55299c8a90e57246125954e",
+  "versionName": "1.0.6",
+  "versionCode": 1000006,
+  "publishedAt": "2026-10-14T08:52:30.370Z",
+  "sourceCommit": "d7801fbac266ae8eee90a8b8dbb74e1cc7a581bf",
   "releaseNotes": [
     {
       "title": "Other updates",
       "items": [
-        "Keep chat input focused through timeline scrolling"
+        "Redesign OnlyUs and Notes launcher icons"
       ]
     }
   ],
@@ -17,16 +17,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.5/OnlyUs.apk",
-      "sizeBytes": 5074664,
-      "sha256": "7684fefacf17c302720d3f9408f096c3d504471283100e89fc039c8cb759b2c4"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.6/OnlyUs.apk",
+      "sizeBytes": 5018897,
+      "sha256": "bf52148a970485f05899992a0a1b6725b1f6325182c4aba807ac8edb0feff27c"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.5/Notes.apk",
-      "sizeBytes": 4965055,
-      "sha256": "260e5bcf728c1e73eaac437b4dc26ea27b9e1ed04cd0040f53fbad5026b6c75d"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.6/Notes.apk",
+      "sizeBytes": 5014745,
+      "sha256": "6c6a1862f44ff24ed2965a95228cc7c436584cf1c70c0a876b5247bd0e8c2eb7"
     }
   }
 }
