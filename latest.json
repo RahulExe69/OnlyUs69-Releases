@@ -3,19 +3,13 @@
   "appName": "OnlyUs",
   "versionName": "1.0.7",
   "versionCode": 1000007,
-  "publishedAt": "2026-10-21T19:16:55.986Z",
-  "sourceCommit": "96de24ca4150040e80e3428879b24e01f22c5abd",
+  "publishedAt": "2026-10-21T19:24:27.998Z",
+  "sourceCommit": "9f07717d44c2f3721f7967c83ba4f3f7ba84072c",
   "releaseNotes": [
-    {
-      "title": "Bug fixes",
-      "items": [
-        "Fix misleading version-sync recovery loop"
-      ]
-    },
     {
       "title": "Other updates",
       "items": [
-        "Show recovery failure instead of looping the sync prompt"
+        "Expose runtime error details on app error screen"
       ]
     }
   ],
@@ -24,15 +18,15 @@
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/OnlyUs.apk",
-      "sizeBytes": 4983732,
-      "sha256": "c2ac6b92579ea9cb5fb94c6c2f56a8b3415320ec195463bbf242237bb462f5c2"
+      "sizeBytes": 4983852,
+      "sha256": "c841ee773ba426cf710ed87cf2c4bdda5be7979282974af00282f925fb33de78"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/Notes.apk",
-      "sizeBytes": 4979588,
-      "sha256": "9f14edc78ee67388d705fabde8b8d592124376ced9cbd1adae2646bf0c88e8f2"
+      "sizeBytes": 4979711,
+      "sha256": "90f6cb46f95148be4ed274ef5218405a80a9be786c4b7d858b9aecdd4b3f5fa5"
     }
   }
 }
