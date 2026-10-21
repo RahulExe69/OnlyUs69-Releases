@@ -1,15 +1,28 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.6",
-  "versionCode": 1000006,
-  "publishedAt": "2026-10-14T08:52:30.370Z",
-  "sourceCommit": "d7801fbac266ae8eee90a8b8dbb74e1cc7a581bf",
+  "versionName": "1.0.7",
+  "versionCode": 1000007,
+  "publishedAt": "2026-10-21T18:52:32.016Z",
+  "sourceCommit": "3d19b88f260f46151169127c50f8fa1a82242498",
   "releaseNotes": [
+    {
+      "title": "Improvements",
+      "items": [
+        "improve avatar cropping and profile syncing"
+      ]
+    },
+    {
+      "title": "Bug fixes",
+      "items": [
+        "Restore natural chat keyboard and fix older-message pagination",
+        "stop forcing native keyboard open during chat scroll"
+      ]
+    },
     {
       "title": "Other updates",
       "items": [
-        "Redesign OnlyUs and Notes launcher icons"
+        "Render chat notifications in native conversation style (#18)"
       ]
     }
   ],
@@ -17,16 +30,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.6/OnlyUs.apk",
-      "sizeBytes": 5018897,
-      "sha256": "bf52148a970485f05899992a0a1b6725b1f6325182c4aba807ac8edb0feff27c"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/OnlyUs.apk",
+      "sizeBytes": 4983380,
+      "sha256": "9697bdbd4bb439eed120ff98b1928c1e62fde4aaa1f6b373e965045a2a3ac335"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.6/Notes.apk",
-      "sizeBytes": 5014745,
-      "sha256": "6c6a1862f44ff24ed2965a95228cc7c436584cf1c70c0a876b5247bd0e8c2eb7"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/Notes.apk",
+      "sizeBytes": 4979232,
+      "sha256": "3540220763e27ceed2b09dc4a623c554739c230e18b27ed8368699ad3619d81f"
     }
   }
 }
