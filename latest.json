@@ -1,15 +1,25 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.6",
-  "versionCode": 1000006,
-  "publishedAt": "2026-10-21T19:24:27.998Z",
-  "sourceCommit": "9f07717d44c2f3721f7967c83ba4f3f7ba84072c",
+  "versionName": "1.0.7",
+  "versionCode": 1000007,
+  "publishedAt": "2026-10-21T19:43:31Z",
+  "sourceCommit": "release-v1.0.7",
   "releaseNotes": [
+    {
+      "title": "Bug fixes",
+      "items": [
+        "Fix release version variable in APK updater",
+        "Fix chat history pagination props in ChatView"
+      ]
+    },
     {
       "title": "Other updates",
       "items": [
-        "Expose runtime error details on app error screen"
+        "Attach update verification metadata to GitHub release",
+        "Publish update metadata with APK release assets",
+        "Generate release-attached OnlyUs update metadata",
+        "Read APK force-update metadata from latest GitHub release"
       ]
     }
   ],
@@ -18,15 +28,15 @@
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/OnlyUs.apk",
-      "sizeBytes": 4983852,
-      "sha256": "c841ee773ba426cf710ed87cf2c4bdda5be7979282974af00282f925fb33de78"
+      "sizeBytes": 4984146,
+      "sha256": "66c0c470633bee9b953025f5b2a4e49b63ed101f744f8b85396a873944b17bce"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/Notes.apk",
-      "sizeBytes": 4979711,
-      "sha256": "90f6cb46f95148be4ed274ef5218405a80a9be786c4b7d858b9aecdd4b3f5fa5"
+      "sizeBytes": 4979987,
+      "sha256": "7c83af72b9455d5f8d24a95a1765b587c81d10190bc7f825373eb7f74f3d878a"
     }
   }
 }
