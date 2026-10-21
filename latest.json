@@ -3,26 +3,19 @@
   "appName": "OnlyUs",
   "versionName": "1.0.7",
   "versionCode": 1000007,
-  "publishedAt": "2026-10-21T18:52:32.016Z",
-  "sourceCommit": "3d19b88f260f46151169127c50f8fa1a82242498",
+  "publishedAt": "2026-10-21T19:16:55.986Z",
+  "sourceCommit": "96de24ca4150040e80e3428879b24e01f22c5abd",
   "releaseNotes": [
-    {
-      "title": "Improvements",
-      "items": [
-        "improve avatar cropping and profile syncing"
-      ]
-    },
     {
       "title": "Bug fixes",
       "items": [
-        "Restore natural chat keyboard and fix older-message pagination",
-        "stop forcing native keyboard open during chat scroll"
+        "Fix misleading version-sync recovery loop"
       ]
     },
     {
       "title": "Other updates",
       "items": [
-        "Render chat notifications in native conversation style (#18)"
+        "Show recovery failure instead of looping the sync prompt"
       ]
     }
   ],
@@ -31,15 +24,15 @@
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/OnlyUs.apk",
-      "sizeBytes": 4983380,
-      "sha256": "9697bdbd4bb439eed120ff98b1928c1e62fde4aaa1f6b373e965045a2a3ac335"
+      "sizeBytes": 4983732,
+      "sha256": "c2ac6b92579ea9cb5fb94c6c2f56a8b3415320ec195463bbf242237bb462f5c2"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
       "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/Notes.apk",
-      "sizeBytes": 4979232,
-      "sha256": "3540220763e27ceed2b09dc4a623c554739c230e18b27ed8368699ad3619d81f"
+      "sizeBytes": 4979588,
+      "sha256": "9f14edc78ee67388d705fabde8b8d592124376ced9cbd1adae2646bf0c88e8f2"
     }
   }
 }
