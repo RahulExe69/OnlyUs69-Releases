@@ -1,0 +1,89 @@
+name: Recover legacy updater manifest
+
+on:
+  release:
+    types: [deleted]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: legacy-manifest-recovery
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    name: Rebuild latest.json from newest remaining release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Select newest published release
+        id: latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          releases="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" | jq -s 'add | map(select(.draft == false and .prerelease == false)) | sort_by(.published_at) | last // empty')"
+          tag="$(jq -r '.tag_name // empty' <<< "$releases")"
+          if [ -z "$tag" ]; then
+            echo "No published non-prerelease releases remain. Leaving latest.json unchanged rather than publishing invalid metadata."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "found=true" >> "$GITHUB_OUTPUT"
+          echo "Selected newest published release: $tag"
+
+      - name: Download release-attached metadata
+        if: steps.latest.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/onlyus-metadata"
+          gh release download "${{ steps.latest.outputs.tag }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern "onlyus-update-metadata.json" \
+            --dir "$RUNNER_TEMP/onlyus-metadata"
+          test -s "$RUNNER_TEMP/onlyus-metadata/onlyus-update-metadata.json"
+
+      - name: Rebuild and validate latest.json
+        if: steps.latest.outputs.found == 'true'
+        env:
+          METADATA_PATH: ${{ runner.temp }}/onlyus-metadata/onlyus-update-metadata.json
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+          const metadata = JSON.parse(await readFile(process.env.METADATA_PATH, 'utf8'));
+          if (!/^\\d+\\.\\d+\\.\\d+$/.test(metadata.versionName ?? '')) throw new Error('Invalid versionName in release metadata.');
+          if (!Number.isSafeInteger(metadata.versionCode) || metadata.versionCode < 1) throw new Error('Invalid versionCode in release metadata.');
+          for (const id of ['com.onlyus.app', 'com.onlyus.notes']) {
+            const edition = metadata.editions?.[id];
+            if (!edition?.downloadUrl || !edition?.sha256 || !Number.isSafeInteger(edition?.sizeBytes)) {
+              throw new Error('Missing or invalid edition metadata: ' + id);
+            }
+          }
+          delete metadata.versionTag;
+          await writeFile('latest.json', JSON.stringify(metadata, null, 2) + '\\n');
+          console.log('Rebuilt latest.json for OnlyUs ' + metadata.versionName);
+          NODE
+
+      - name: Commit manifest if changed
+        if: steps.latest.outputs.found == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add latest.json
+          if git diff --cached --quiet; then
+            echo "latest.json already matches the newest release."
+          else
+            git commit -m "chore: recover legacy manifest after release deletion"
+            git push origin HEAD:main
+          fi
