@@ -22,22 +22,27 @@ jobs:
         with:
           ref: main
 
-      - name: Select newest published release
+      - name: Select highest remaining stable version
         id: latest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          releases="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" | jq -s 'add | map(select(.draft == false and .prerelease == false)) | sort_by(.published_at) | last // empty')"
-          tag="$(jq -r '.tag_name // empty' <<< "$releases")"
+          # Version ordering, not publication timestamps, determines "latest":
+          # v1.0.10 must sort after v1.0.9 even if dates are unusual.
+          tags="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+            jq -r '.[] | select(.draft == false and .prerelease == false) | .tag_name // empty' |
+            grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' |
+            sort -V || true)"
+          tag="$(printf '%s\n' "$tags" | tail -n 1)"
           if [ -z "$tag" ]; then
-            echo "No published non-prerelease releases remain. Leaving latest.json unchanged rather than publishing invalid metadata."
+            echo "No stable semantic-version releases remain. Keeping latest.json unchanged because no valid replacement exists."
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           echo "found=true" >> "$GITHUB_OUTPUT"
-          echo "Selected newest published release: $tag"
+          echo "Selected highest remaining stable release: $tag"
 
       - name: Download release-attached metadata
         if: steps.latest.outputs.found == 'true'
@@ -56,16 +61,26 @@ jobs:
         if: steps.latest.outputs.found == 'true'
         env:
           METADATA_PATH: ${{ runner.temp }}/onlyus-metadata/onlyus-update-metadata.json
+          SELECTED_TAG: ${{ steps.latest.outputs.tag }}
         run: |
           set -euo pipefail
           node --input-type=module <<'NODE'
           import { readFile, writeFile } from 'node:fs/promises';
           const metadata = JSON.parse(await readFile(process.env.METADATA_PATH, 'utf8'));
+          if (metadata.versionTag !== process.env.SELECTED_TAG) {
+            throw new Error('Release metadata tag does not match selected release.');
+          }
           if (!/^\d+\.\d+\.\d+$/.test(metadata.versionName ?? '')) throw new Error('Invalid versionName in release metadata.');
           if (!Number.isSafeInteger(metadata.versionCode) || metadata.versionCode < 1) throw new Error('Invalid versionCode in release metadata.');
           for (const id of ['com.onlyus.app', 'com.onlyus.notes']) {
             const edition = metadata.editions?.[id];
-            if (!edition?.downloadUrl || !edition?.sha256 || !Number.isSafeInteger(edition?.sizeBytes)) {
+            if (
+              edition?.packageId !== id ||
+              !edition?.downloadUrl?.startsWith('https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/') ||
+              !/^[a-f0-9]{64}$/i.test(edition?.sha256 ?? '') ||
+              !Number.isSafeInteger(edition?.sizeBytes) ||
+              edition.sizeBytes < 1
+            ) {
               throw new Error('Missing or invalid edition metadata: ' + id);
             }
           }
@@ -82,7 +97,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add latest.json
           if git diff --cached --quiet; then
-            echo "latest.json already matches the newest release."
+            echo "latest.json already matches the highest remaining stable release."
           else
             git commit -m "chore: recover legacy manifest after release deletion"
             git push origin HEAD:main
