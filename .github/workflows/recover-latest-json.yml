@@ -61,7 +61,7 @@ jobs:
           node --input-type=module <<'NODE'
           import { readFile, writeFile } from 'node:fs/promises';
           const metadata = JSON.parse(await readFile(process.env.METADATA_PATH, 'utf8'));
-          if (!/^\\d+\\.\\d+\\.\\d+$/.test(metadata.versionName ?? '')) throw new Error('Invalid versionName in release metadata.');
+          if (!/^\d+\.\d+\.\d+$/.test(metadata.versionName ?? '')) throw new Error('Invalid versionName in release metadata.');
           if (!Number.isSafeInteger(metadata.versionCode) || metadata.versionCode < 1) throw new Error('Invalid versionCode in release metadata.');
           for (const id of ['com.onlyus.app', 'com.onlyus.notes']) {
             const edition = metadata.editions?.[id];
@@ -70,7 +70,7 @@ jobs:
             }
           }
           delete metadata.versionTag;
-          await writeFile('latest.json', JSON.stringify(metadata, null, 2) + '\\n');
+          await writeFile('latest.json', JSON.stringify(metadata, null, 2) + '\n');
           console.log('Rebuilt latest.json for OnlyUs ' + metadata.versionName);
           NODE
 
