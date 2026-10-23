@@ -22,21 +22,29 @@ jobs:
         with:
           ref: main
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Test manifest converter
+        run: node --test scripts/test-build-latest-manifest.test.mjs
+
       - name: Select highest remaining stable version
         id: latest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          # Version ordering, not publication timestamps, determines "latest":
-          # v1.0.10 must sort after v1.0.9 even if dates are unusual.
+          # Only existing published Releases count. A deleted Release is no longer
+          # in this list even if its underlying Git tag remains in the repository.
           tags="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
             jq -r '.[] | select(.draft == false and .prerelease == false) | .tag_name // empty' |
             grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' |
             sort -V || true)"
           tag="$(printf '%s\n' "$tags" | tail -n 1)"
           if [ -z "$tag" ]; then
-            echo "No stable semantic-version releases remain. Keeping latest.json unchanged because no valid replacement exists."
+            echo "No stable releases remain."
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -44,14 +52,30 @@ jobs:
           echo "found=true" >> "$GITHUB_OUTPUT"
           echo "Selected highest remaining stable release: $tag"
 
-      - name: Download release-attached metadata
+      - name: Remove stale manifest if no releases remain
+        if: steps.latest.outputs.found != 'true'
+        run: |
+          set -euo pipefail
+          if [ -f latest.json ]; then
+            git rm latest.json
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: remove stale updater manifest after final release deletion"
+            git push origin HEAD:main
+          else
+            echo "No latest.json to remove."
+          fi
+
+      - name: Fetch selected release information and metadata
         if: steps.latest.outputs.found == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SELECTED_TAG: ${{ steps.latest.outputs.tag }}
         run: |
           set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${SELECTED_TAG}" > "$RUNNER_TEMP/github-release.json"
           mkdir -p "$RUNNER_TEMP/onlyus-metadata"
-          gh release download "${{ steps.latest.outputs.tag }}" \
+          gh release download "${SELECTED_TAG}" \
             --repo "$GITHUB_REPOSITORY" \
             --pattern "onlyus-update-metadata.json" \
             --dir "$RUNNER_TEMP/onlyus-metadata"
@@ -61,33 +85,11 @@ jobs:
         if: steps.latest.outputs.found == 'true'
         env:
           METADATA_PATH: ${{ runner.temp }}/onlyus-metadata/onlyus-update-metadata.json
+          RELEASE_INFO_PATH: ${{ runner.temp }}/github-release.json
           SELECTED_TAG: ${{ steps.latest.outputs.tag }}
-        run: |
-          set -euo pipefail
-          node --input-type=module <<'NODE'
-          import { readFile, writeFile } from 'node:fs/promises';
-          const metadata = JSON.parse(await readFile(process.env.METADATA_PATH, 'utf8'));
-          if (metadata.versionTag !== process.env.SELECTED_TAG) {
-            throw new Error('Release metadata tag does not match selected release.');
-          }
-          if (!/^\d+\.\d+\.\d+$/.test(metadata.versionName ?? '')) throw new Error('Invalid versionName in release metadata.');
-          if (!Number.isSafeInteger(metadata.versionCode) || metadata.versionCode < 1) throw new Error('Invalid versionCode in release metadata.');
-          for (const id of ['com.onlyus.app', 'com.onlyus.notes']) {
-            const edition = metadata.editions?.[id];
-            if (
-              edition?.packageId !== id ||
-              !edition?.downloadUrl?.startsWith('https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/') ||
-              !/^[a-f0-9]{64}$/i.test(edition?.sha256 ?? '') ||
-              !Number.isSafeInteger(edition?.sizeBytes) ||
-              edition.sizeBytes < 1
-            ) {
-              throw new Error('Missing or invalid edition metadata: ' + id);
-            }
-          }
-          delete metadata.versionTag;
-          await writeFile('latest.json', JSON.stringify(metadata, null, 2) + '\n');
-          console.log('Rebuilt latest.json for OnlyUs ' + metadata.versionName);
-          NODE
+          REPOSITORY_NAME: ${{ github.repository }}
+          OUTPUT_PATH: latest.json
+        run: node scripts/build-latest-manifest.mjs
 
       - name: Commit manifest if changed
         if: steps.latest.outputs.found == 'true'
@@ -99,6 +101,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "latest.json already matches the highest remaining stable release."
           else
-            git commit -m "chore: recover legacy manifest after release deletion"
+            git commit -m "chore: recover latest.json for ${{ steps.latest.outputs.tag }}"
             git push origin HEAD:main
           fi
