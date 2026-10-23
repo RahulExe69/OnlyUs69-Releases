@@ -2,24 +2,24 @@
   "schemaVersion": 1,
   "appName": "OnlyUs",
   "versionName": "1.0.8",
-  "versionCode": 1000008,
-  "publishedAt": "2026-10-23T19:48:57Z",
-  "sourceCommit": "release-v1.0.8",
+  "versionCode": 1008,
+  "publishedAt": "2026-10-23T19:48:55Z",
   "releaseNotes": [
     {
       "title": "New features",
       "items": [
         "Support pasting clipboard images and GIFs in chat",
-        "Add native APK force-update flow and public release metadata",
-        "Add self-hosted incremental OTA updates"
+        "Add native APK force-update flow and public release metadata (#11)",
+        "Add self-hosted incremental OTA updates (#10)",
+        "implement circadian sleep cycle and butterfly command",
+        "add 3D visual effects and pet animations"
       ]
     },
     {
       "title": "Improvements",
       "items": [
-        "Improve avatar cropping and profile syncing",
-        "Automate release notes and speed up APK builds",
-        "Compact APK update screen and show edition-specific app identity"
+        "improve avatar cropping and profile syncing",
+        "Automate Play Store-style release notes and speed up APK builds"
       ]
     },
     {
@@ -27,22 +27,34 @@
       "items": [
         "Fix Notes media picker lifecycle and camera media options",
         "Fix account theme loading and prevent local theme overwrite",
-        "Fix OnlyUs push registration and notification lifecycle"
+        "Fix OnlyUs push registration and notification lifecycle",
+        "Fix JSX left behind when removing profile pet option",
+        "Fix square clipping around partner avatar glow"
+      ]
+    },
+    {
+      "title": "Other updates",
+      "items": [
+        "Preserve Notes vault while choosing partner photos",
+        "Preserve Notes vault while choosing profile photos",
+        "Keep Notes activity alive for external media pickers",
+        "Compact APK update screen and show edition-specific app identity",
+        "Avoid duplicate native and foreground chat notifications"
       ]
     }
   ],
   "editions": {
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
-      "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/OnlyUs.apk",
+      "assetName": "OnlyUs-v1.0.8.apk",
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/OnlyUs-v1.0.8.apk",
       "sizeBytes": 4984553,
       "sha256": "93ba47ec389974b59af569de2cce535f9d60d4ba27d7d50abbe884943cf2bfc1"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
-      "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/Notes.apk",
+      "assetName": "Notes-v1.0.8.apk",
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/Notes-v1.0.8.apk",
       "sizeBytes": 4980424,
       "sha256": "a696e85014c3a0a4a41751213142dde09b402d13f592762e4776b863607ce69d"
     }
