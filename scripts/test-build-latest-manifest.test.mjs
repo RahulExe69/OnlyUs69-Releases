@@ -63,9 +63,10 @@ test('converts actual legacy v1.0.8 metadata to compatible latest.json schema', 
 });
 
 test('rejects a legacy release tag mismatch rather than publishing stale APK links', () => {
+  const releaseForOlderTag = { ...common, tag_name: 'v1.0.7' };
   assert.throws(
-    () => buildLatestManifest(legacyMetadata, common, 'v1.0.7', 'RahulExe69/OnlyUs69-Releases'),
-    /does not match selected release tag/
+    () => buildLatestManifest(legacyMetadata, releaseForOlderTag, 'v1.0.7', 'RahulExe69/OnlyUs69-Releases'),
+    /Legacy metadata version does not match selected release tag/
   );
 });
 
