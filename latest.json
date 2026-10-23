@@ -1,25 +1,33 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.7",
-  "versionCode": 1000007,
-  "publishedAt": "2026-10-21T19:43:31Z",
-  "sourceCommit": "release-v1.0.7",
+  "versionName": "1.0.8",
+  "versionCode": 1000008,
+  "publishedAt": "2026-10-23T19:48:57Z",
+  "sourceCommit": "release-v1.0.8",
   "releaseNotes": [
     {
-      "title": "Bug fixes",
+      "title": "New features",
       "items": [
-        "Fix release version variable in APK updater",
-        "Fix chat history pagination props in ChatView"
+        "Support pasting clipboard images and GIFs in chat",
+        "Add native APK force-update flow and public release metadata",
+        "Add self-hosted incremental OTA updates"
       ]
     },
     {
-      "title": "Other updates",
+      "title": "Improvements",
       "items": [
-        "Attach update verification metadata to GitHub release",
-        "Publish update metadata with APK release assets",
-        "Generate release-attached OnlyUs update metadata",
-        "Read APK force-update metadata from latest GitHub release"
+        "Improve avatar cropping and profile syncing",
+        "Automate release notes and speed up APK builds",
+        "Compact APK update screen and show edition-specific app identity"
+      ]
+    },
+    {
+      "title": "Bug fixes",
+      "items": [
+        "Fix Notes media picker lifecycle and camera media options",
+        "Fix account theme loading and prevent local theme overwrite",
+        "Fix OnlyUs push registration and notification lifecycle"
       ]
     }
   ],
@@ -27,16 +35,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/OnlyUs.apk",
-      "sizeBytes": 4984146,
-      "sha256": "66c0c470633bee9b953025f5b2a4e49b63ed101f744f8b85396a873944b17bce"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/OnlyUs.apk",
+      "sizeBytes": 4984553,
+      "sha256": "93ba47ec389974b59af569de2cce535f9d60d4ba27d7d50abbe884943cf2bfc1"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.7/Notes.apk",
-      "sizeBytes": 4979987,
-      "sha256": "7c83af72b9455d5f8d24a95a1765b587c81d10190bc7f825373eb7f74f3d878a"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/Notes.apk",
+      "sizeBytes": 4980424,
+      "sha256": "a696e85014c3a0a4a41751213142dde09b402d13f592762e4776b863607ce69d"
     }
   }
 }

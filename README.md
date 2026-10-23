@@ -15,13 +15,11 @@ Visit the [Releases](https://github.com/RahulExe69/OnlyUs69-Releases/releases) p
 
 Choose the edition that matches the app you intend to install. Installing an APK from outside Google Play requires Android's permission for that installation source.
 
-## Updates
+## Update metadata
 
-The app checks the published release metadata at:
-
-- [latest.json](https://raw.githubusercontent.com/RahulExe69/OnlyUs69-Releases/main/latest.json)
-
-When available, this file contains the current version, release notes, download links, and integrity information used by the updater.
+- **Current updater:** Newer app builds discover the latest published release through the GitHub Releases API and verify the release-attached `onlyus-update-metadata.json` asset.
+- **Legacy updater compatibility:** Older installed builds may still read [latest.json](https://raw.githubusercontent.com/RahulExe69/OnlyUs69-Releases/main/latest.json). Keep this file synchronized with the newest published release so those installations do not remain stuck on an older version.
+- The metadata includes version information, edition-specific APK URLs, release notes, file sizes, and SHA-256 hashes. The APK hashes must match the published assets exactly.
 
 ## Verification and safety
 
