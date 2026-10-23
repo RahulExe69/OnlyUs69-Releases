@@ -140,6 +140,6 @@ test('rejects a URL outside the official release path', () => {
   altered.assets[0].browser_download_url = 'https://evil.example/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/OnlyUs-v1.0.8.apk';
   assert.throws(
     () => buildLatestManifest(legacyMetadata, altered, 'v1.0.8', 'RahulExe69/OnlyUs69-Releases'),
-    /APK asset URL/size is invalid/
+    /APK asset URL.*invalid/
   );
 });
