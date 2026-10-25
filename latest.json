@@ -1,45 +1,26 @@
 {
   "schemaVersion": 1,
   "appName": "OnlyUs",
-  "versionName": "1.0.8",
-  "versionCode": 1000008,
-  "publishedAt": "2026-10-23T21:06:58.637Z",
+  "versionName": "1.0.9",
+  "versionCode": 1000009,
+  "publishedAt": "2026-10-25T11:39:44.925Z",
+  "sourceCommit": "d735a2190c367bc652fca5ad5952ace644af4618",
   "releaseNotes": [
-    {
-      "title": "New features",
-      "items": [
-        "support legacy release metadata",
-        "Support pasting clipboard images and GIFs in chat",
-        "Add native APK force-update flow and public release metadata (#11)",
-        "Add self-hosted incremental OTA updates (#10)",
-        "implement circadian sleep cycle and butterfly command"
-      ]
-    },
-    {
-      "title": "Improvements",
-      "items": [
-        "improve avatar cropping and profile syncing",
-        "Automate Play Store-style release notes and speed up APK builds"
-      ]
-    },
     {
       "title": "Bug fixes",
       "items": [
-        "select highest valid APK release",
-        "make APK update checks resilient",
-        "allow more time for APK update discovery",
-        "Fix Notes media picker lifecycle and camera media options",
-        "Fix account theme loading and prevent local theme overwrite"
+        "Prevent Notes panic exit during first-launch permission prompts (#30)",
+        "Fix APK update detection with canonical manifest validation"
       ]
     },
     {
       "title": "Other updates",
       "items": [
-        "automate legacy updater metadata sync",
-        "Preserve Notes vault while choosing partner photos",
-        "Preserve Notes vault while choosing profile photos",
-        "Keep Notes activity alive for external media pickers",
-        "Compact APK update screen and show edition-specific app identity"
+        "Use edition-specific launcher labels for OnlyUs and Notes (#29)",
+        "Guard Notes startup against OEM sensor and receiver failures",
+        "Retry push notification registration for regular OnlyUs",
+        "Restrict shake-to-exit to Notes edition",
+        "Restore Notes panic exit without breaking media pickers"
       ]
     }
   ],
@@ -47,17 +28,16 @@
     "com.onlyus.app": {
       "packageId": "com.onlyus.app",
       "assetName": "OnlyUs.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/OnlyUs.apk",
-      "sizeBytes": 4985480,
-      "sha256": "2a8088a9b858b1d10639094f319af93015d5de79975ae0dfacefd78faa3b5657"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.9/OnlyUs.apk",
+      "sizeBytes": 4988175,
+      "sha256": "86910034f0d22d638d1be196118b12d51dd368723f91d39ba2f60154a6e30824"
     },
     "com.onlyus.notes": {
       "packageId": "com.onlyus.notes",
       "assetName": "Notes.apk",
-      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.8/Notes.apk",
-      "sizeBytes": 4981345,
-      "sha256": "94b96a3bf9e49764633a9f6cbcc239897b0b3ff21e26219f928ed1cbbcfd36f2"
+      "downloadUrl": "https://github.com/RahulExe69/OnlyUs69-Releases/releases/download/v1.0.9/Notes.apk",
+      "sizeBytes": 4984037,
+      "sha256": "27f0d11595d4751ed136b43830d37608bb09d3b518939257e700728f7e64bf9b"
     }
-  },
-  "sourceCommit": "6e5a2616af78e4f3b21ee05722d53bc89a582ec8"
+  }
 }
